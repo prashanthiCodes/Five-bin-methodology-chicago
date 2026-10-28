@@ -1,0 +1,4 @@
+﻿year,worksheet,records,unique_geoids,duplicate_geoids,malformed_geoids,missing_or_flagged,valid_price_count,minimum,maximum,unweighted_mean,computed_median,workbook_cached_city_median,cached_matches_computed,weight_formula_checked,weight_formula_mismatches,currency,metric_note
+2014,2014,789,789,0,0,26,763,15500.0,1454000.0,266395.9323782305,172000.0,172000.0,True,763,0,Unspecified; USD assumed,Sales-count-weighted combination of SFH and 2–4-unit medians; not pooled transaction median.
+2019,2019,789,789,0,0,23,766,31965.11627906977,2000000.0,371262.7363232049,276833.3333333334,276833.3333333334,True,766,0,Unspecified; USD assumed,Sales-count-weighted combination of SFH and 2–4-unit medians; not pooled transaction median.
+2024,2024,789,789,0,0,25,764,55000.0,2000000.0,473266.977704603,378500.0,378500.0,True,764,0,Unspecified; USD assumed,Sales-count-weighted combination of SFH and 2–4-unit medians; not pooled transaction median.

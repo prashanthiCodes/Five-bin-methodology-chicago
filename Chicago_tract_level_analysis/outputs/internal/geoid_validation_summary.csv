@@ -1,0 +1,4 @@
+﻿year,source_rows,unique_valid_geoids,duplicates,malformed,shared_by_all_three,only_one_year_in_this_year,two_years_including_this_year,boundary_vintage,boundary_geoids,data_without_boundary,boundary_without_data,note
+2014,793,793,0,0,777,0,16,2010,793,0,0,2014/2019 use 2010 and 2024 uses 2020 vintage. Same GEOID does not establish identical polygon; no crosswalk or harmonization.
+2019,793,793,0,0,777,0,16,2010,793,0,0,2014/2019 use 2010 and 2024 uses 2020 vintage. Same GEOID does not establish identical polygon; no crosswalk or harmonization.
+2024,792,792,0,0,777,15,0,2020,792,0,0,2014/2019 use 2010 and 2024 uses 2020 vintage. Same GEOID does not establish identical polygon; no crosswalk or harmonization.

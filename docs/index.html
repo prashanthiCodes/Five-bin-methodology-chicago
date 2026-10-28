@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Interactive Chicago census tract indicator map for 2014, 2019, and 2024.">
+<title>Chicago Tract-Level Analysis</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<style>
+:root{--ink:#20323a;--muted:#5d7077;--paper:#f2f5f3;--card:#fff;--line:#d5dfdc}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+header{padding:26px clamp(18px,4vw,56px);background:#173b43;color:white}header p{max-width:960px;color:#d7e6e1;margin:10px 0 0}header .eyebrow{margin:0 0 6px;color:#a9d5c5;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase}h1{margin:0;font-size:clamp(1.6rem,3vw,2.4rem);line-height:1.15}
+main{max-width:1600px;margin:auto;padding:18px clamp(12px,2.5vw,34px);display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:16px}.panel{background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:0 2px 10px #20323a0a}
+.controls{display:flex;align-items:end;flex-wrap:wrap;gap:14px;padding:14px 17px;border-bottom:1px solid var(--line)}label{display:grid;gap:4px;color:#4c6066;font-size:.8rem;font-weight:700}select{min-width:175px;padding:9px;border:1px solid #aebbb7;border-radius:7px;background:white;color:var(--ink);font:inherit}#indicator{min-width:min(370px,75vw)}#status{margin:0 0 2px auto;color:var(--muted);font-size:.82rem}
+#map{height:min(72vh,790px);min-height:500px;background:#eef2f0}.side{display:flex;flex-direction:column;gap:14px}.card{padding:16px 18px}h2{margin:0 0 9px;font-size:1.02rem}.subtle{color:var(--muted);font-size:.88rem;margin:6px 0}.note{padding:10px 12px;border-left:3px solid #cf9c35;background:#fff8e9;color:#5b4b2c;border-radius:4px;font-size:.86rem}
+#legend{display:grid;gap:8px;margin-top:12px}.legend-row{display:grid;grid-template-columns:18px 1fr;gap:9px;align-items:center;font-size:.86rem}.swatch{width:17px;height:17px;border:1px solid #0002;border-radius:4px}.leaflet-tooltip{border:1px solid #c6d2ce;border-radius:7px;box-shadow:0 3px 14px #19343b26;color:#22343a}.tip-title{font-weight:750}.tip-detail{color:#53676d}
+footer{padding:0 clamp(18px,4vw,56px) 24px;color:var(--muted);font-size:.82rem}
+@media(max-width:980px){main{grid-template-columns:1fr}.side{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}#map{height:65vh;min-height:450px}}
+@media(max-width:580px){.controls{align-items:stretch;flex-direction:column}select,#indicator{width:100%;min-width:0}#map{min-height:400px;height:58vh}#status{margin:0}}
+</style>
+</head>
+<body>
+<header>
+<p class="eyebrow">Chicago · census tracts · ACS 5-year estimates</p>
+<h1>Socioeconomic indicators across Chicago tracts</h1>
+<p>Compare each tract with its Chicago benchmark for the selected year. Neutral indicators have no direction.</p>
+</header>
+<main>
+<section class="panel">
+<div class="controls">
+<label for="year">Year<select id="year"><option>2014</option><option>2019</option><option selected>2024</option></select></label>
+<label for="indicator">Indicator<select id="indicator"></select></label>
+<p id="status" role="status" aria-live="polite">Loading map data…</p>
+</div>
+<div id="map" role="img" aria-label="Map of Chicago census tract polygons"></div>
+</section>
+<aside class="side">
+<section class="panel card"><h2 id="legend-title">Five-bin legend</h2><p class="subtle" id="legend-note"></p><div id="legend"></div></section>
+<section class="panel card"><h2>Formula</h2><p class="subtle" id="formula"></p></section>
+</aside>
+</main>
+<footer>Data attribution: U.S. Census Bureau American Community Survey (ACS) and TIGER/Line.</footer>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script>
+(function(){
+const META_PATH="assets/data/indicator_metadata.json",DATA_PATH="assets/data/classification___YEAR__.json",BOUNDARY_PATH="data/boundaries/chicago_tracts___VINTAGE__.geojson";
+const colors={"Very Low":"#a6611a","Low":"#dfc27d","Middle":"#f5f5f5","High":"#80cdc1","Very High":"#018571"};
+const neutral=["#fff7bc","#fec44f","#fe9929","#ec7014","#993404"];
+const ranges=["< 50%","50% to < 75%","75% through 125% inclusive","> 125% through 150% inclusive","> 150%"];
+const directionText={positive:"Positive",negative:"Negative",neutral:"Neutral (no direction)"};
+const ys=document.getElementById("year"),is=document.getElementById("indicator"),status=document.getElementById("status");
+const legend=document.getElementById("legend"),cache={};let meta,map,layer;
+function esc(x){return String(x==null?"":x).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+function spec(){return meta.indicators.find(x=>x.id===is.value)}
+function fmt(v,s){if(v==null||!Number.isFinite(Number(v)))return "Not available";v=Number(v);if(s.kind==="share")return v.toLocaleString(undefined,{maximumFractionDigits:1})+"%";if(s.unit&&s.unit.toLowerCase().startsWith("usd"))return new Intl.NumberFormat(undefined,{style:"currency",currency:"USD",maximumFractionDigits:0}).format(v);return new Intl.NumberFormat(undefined,{maximumFractionDigits:1}).format(v)}
+function updateLegend(hasValues){let s=spec();legend.replaceChildren();document.getElementById("legend-title").textContent=s.label;document.getElementById("formula").textContent=s.formula||"";
+let direction="Direction: "+directionText[s.direction]+(s.direction==="neutral"?"; no favorable or unfavorable direction is assigned.":".");
+document.getElementById("legend-note").textContent=hasValues?"Compared with the "+ys.value+" Chicago benchmark. "+direction:"No classified tract values are available; gray polygons mean data are missing. "+direction;
+if(!hasValues){let row=document.createElement("div");row.className="legend-row";let sw=document.createElement("span");sw.className="swatch";sw.style.backgroundColor="#b8c0c2";let tx=document.createElement("span");tx.textContent="No data";row.append(sw,tx);legend.append(row);return}
+for(let i=0;i<5;i++){let b=meta.bins[i],label=s.direction==="neutral"?b.neutral_label:s.direction==="negative"?b.negative_label:b.positive_label;
+let row=document.createElement("div");row.className="legend-row";let sw=document.createElement("span");sw.className="swatch";sw.style.backgroundColor=s.direction==="neutral"?neutral[i]:colors[label];
+let tx=document.createElement("span");tx.textContent=ranges[i]+" of benchmark · "+label;row.append(sw,tx);legend.append(row)}}
+function tooltip(f,r,t){let s=spec(),p=f.properties,n=p.tract_name||t&&t.tract_name||"Census tract",out='<div class="tip-title">'+esc(n)+'</div><div class="tip-detail">GEOID: '+esc(p.GEOID)+'</div>';
+let c=t&&t.community_area;if(c)out+='<div class="tip-detail">Community area: '+esc(c)+'</div>';
+out+='<div>Tract value: <b>'+esc(fmt(r&&r.value,s))+'</b></div>';
+if(s.kind==="share"&&r){out+='<div class="tip-detail">Numerator: '+esc(fmt(r.numerator_count,{kind:"count",unit:"count"}))+' · '+esc(s.numerator_label||"count")+'</div><div class="tip-detail">Denominator: '+esc(fmt(r.denominator_count,{kind:"count",unit:"count"}))+' · '+esc(s.denominator_label||"denominator")+'</div>'}
+if(s.kind==="price"&&r&&r.supporting_count!=null)out+='<div class="tip-detail">Sales used in weighting: '+esc(fmt(r.supporting_count,{kind:"count",unit:"count"}))+'</div>';
+out+='<div class="tip-detail">Chicago benchmark: '+esc(fmt(r&&r.benchmark,s))+'</div>';
+out+='<div class="tip-detail">Relative to benchmark: '+(r&&r.relative_percent!=null?Number(r.relative_percent).toFixed(1)+"%":"Not available")+' · '+esc(r&&r.class_label||"Not classified")+'</div>';
+return out}
+async function data(y,s){let requested=Number(s.boundary_vintage);let v=Number.isFinite(requested)?requested:(Number(y)===2024?2020:2010);let key=y+"-"+v;if(cache[key])return cache[key];
+let a=await Promise.all([fetch(DATA_PATH.replace("__YEAR__",y)).then(r=>{if(!r.ok)throw Error("Classification file unavailable");return r.json()}),fetch(BOUNDARY_PATH.replace("__VINTAGE__",v)).then(r=>{if(!r.ok)throw Error("Boundary file unavailable");return r.json()})]);
+return cache[key]={data:a[0],geo:a[1],vintage:v}}
+async function draw(){let y=ys.value;status.textContent="Loading "+y+"…";try{
+let s=spec(),d=await data(y,s),hasValues=Object.values(d.data).some(function(t){let r=t&&t[s.id];return r&&r.class_label!=null});updateLegend(hasValues);if(layer)map.removeLayer(layer);
+layer=L.geoJSON(d.geo,{style:function(f){let r=d.data[f.properties.GEOID]&&d.data[f.properties.GEOID][s.id];let fill="#b8c0c2";if(r&&r.class_label)fill=s.direction==="neutral"?neutral[Number(r.raw_bin)-1]:colors[r.class_label];return{color:"#53646a",weight:.55,opacity:.7,fillColor:fill,fillOpacity:.84}},
+onEachFeature:function(f,l){let t=d.data[f.properties.GEOID];l.bindTooltip(function(){return tooltip(f,t&&t[s.id],t&&t._meta)},{sticky:true,direction:"auto",opacity:.97});l.on({mouseover:function(e){e.target.setStyle({weight:1.6,color:"#152d34",fillOpacity:.96})},mouseout:function(e){layer.resetStyle(e.target)}})}}).addTo(map);
+if(!map._fit){map.fitBounds(layer.getBounds(),{padding:[14,14]});map._fit=true}
+status.textContent=layer.getLayers().length.toLocaleString()+" tracts · "+d.vintage+" boundaries"+(hasValues?"":" · no classified values");
+}catch(e){status.textContent="Map data could not be loaded.";console.error(e)}}
+async function start(){try{let r=await fetch(META_PATH);if(!r.ok)throw Error("Metadata unavailable");meta=await r.json();
+meta.indicators.forEach(function(s){let o=document.createElement("option");o.value=s.id;o.textContent=s.label;is.append(o)});
+is.value=meta.indicators.some(x=>x.id==="Bachelor_or_higher_attainment_share")?"Bachelor_or_higher_attainment_share":meta.indicators[0].id;
+map=L.map("map",{zoomControl:true,scrollWheelZoom:true,preferCanvas:true});map.attributionControl.setPrefix("");L.control.scale({metric:true,imperial:false}).addTo(map);
+ys.addEventListener("change",draw);is.addEventListener("change",draw);await draw()
+}catch(e){status.textContent="Map setup failed. Check HTTPS access to Leaflet and the relative data files.";console.error(e)}}
+start()
+})();
+</script>
+</body>
+</html>

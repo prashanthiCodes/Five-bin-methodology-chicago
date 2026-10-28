@@ -1,0 +1,3 @@
+Data: U.S. Census Bureau, American Community Survey (ACS) 5-year estimates; tract boundaries: U.S. Census Bureau TIGER/Line 2010 and 2020.
+Census tract boundaries are statistical geography, not legal land descriptions, and carry no accuracy warranty.
+The project authors are responsible for the analysis and its conclusions. The house-price workbook measure is omitted from this review build pending sharing approval.

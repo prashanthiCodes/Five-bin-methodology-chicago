@@ -1,0 +1,32 @@
+{
+  "analysis_project": "Chicago tract-level analysis",
+  "prepared_inputs": {
+    "2014": {"rows": 793, "unique_geoids": 793, "acs_boundary_vintage": 2010, "renter_master_rows_matched": 793, "renter_values_missing": 0},
+    "2019": {"rows": 793, "unique_geoids": 793, "acs_boundary_vintage": 2010, "renter_master_rows_matched": 793, "renter_values_missing": 0},
+    "2024": {"rows": 792, "unique_geoids": 792, "acs_boundary_vintage": 2020, "renter_master_rows_matched": 789, "renter_values_missing": 3}
+  },
+  "house_price_workbook": {
+    "file": "data/source/Tract_Level_Sales_Weighted_Audit.xlsx",
+    "year_sheets": [2014, 2019, 2024],
+    "geoids_per_sheet": 789,
+    "boundary_vintage_inferred_from_geoid_match": 2020,
+    "valid_price_rows": {"2014": 763, "2019": 766, "2024": 764},
+    "missing_flagged_or_zero": {"2014": 26, "2019": 23, "2024": 25},
+    "metric": "Sales-count-weighted combination of single-family and 2-4-unit medians; not a pooled transaction median.",
+    "currency": "Not stated; USD assumption."
+  },
+  "boundaries": {
+    "2010": "data/boundaries/chicago_tracts_2010.geojson",
+    "2020": "data/boundaries/chicago_tracts_2020.geojson"
+  },
+  "missing_source": "B15003_022E is absent from supplied local tract sources; Bachelor's Degree Attainment Share remains blank with no substitute.",
+  "obsolete_proxy": "Existing ACS B25077 files remain as legacy source artifacts and are not used in current price calculations.",
+  "outputs": {
+    "summary_statistics": "outputs/tables/summary_statistics_by_indicator_year.csv",
+    "city_benchmarks": "outputs/tables/city_benchmarks.csv",
+    "classifications": "outputs/tables/classification_all_years.csv",
+    "data_quality": "outputs/tables/data_quality_report.csv",
+    "geoid_validation": "outputs/internal/geoid_validation_summary.csv",
+    "validation": "outputs/internal/validation_report.json"
+  }
+}

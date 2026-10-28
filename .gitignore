@@ -1,0 +1,16 @@
+# Public repo allowlist: docs/, README.md and .gitignore
+/data/
+/outputs/
+/scripts/
+/website/
+/index.html
+/METHODOLOGY.md
+/DATA_SOURCES_AND_LICENSES.md
+/RESEARCH_README.md
+/METHODOLOGY_legacy.md
+/DATA_SOURCES_AND_LICENSES_legacy.md
+/requirements.txt
+__pycache__/
+*.py[cod]
+*.xlsx
+/MAP_SOURCE_AND_DATA_GUIDE.md

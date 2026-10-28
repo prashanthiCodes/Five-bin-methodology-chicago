@@ -1,0 +1,67 @@
+﻿year,check,status,count,details
+2014,Source GEOID validation,PASS,793,Rows 793; duplicates 0; malformed 0.
+2014,Boundary join,PASS,793,2010-vintage polygons; data without boundary 0; boundary without data 0.
+2014,Geographic vintage,INFO,793,2014 uses 2010 TIGER vintage. Same GEOID does not prove same polygon; no crosswalk/harmonization.
+2014,House-price blanks,INFO,26,Flagged/zero/blank prices remain blank; no values copied between years.
+2014,House-price geometry join,PASS,789,"House-price GEOIDs are joined to 2020-vintage geometry for all workbook years. 2020 boundary IDs without workbook rows: 3. Workbook vintage is inferred from the ID match, not stated in the workbook."
+2014,Renter count enrichment,PASS,793,Extracted from the local master workbook after all shared tract fields matched exactly. Owner + renter equals total occupied housing units on matched rows; missing renter counts remain blank.
+2014,Bachelor_or_higher_attainment_share valid/missing/invalid,PASS,793,missing=0; invalid=0.
+2014,Bachelor's-or-higher source mapping,REVIEW,793,Uses supplied Pop_Edu_BachAbove_E / Total_Pop_25Over_E fields. Includes postgraduate degrees. The source workbook does not provide ACS table IDs/codebook; 2024 tracts with zero 25+ denominator remain invalid.
+2014,Median_household_income valid/missing/invalid,PASS,793,missing=0; invalid=0.
+2014,Median_house_price valid/missing/invalid,WARN,763,missing=26; invalid=0.
+2014,Owner_occupied_share valid/missing/invalid,PASS,793,missing=0; invalid=0.
+2014,Income_100k_plus_share valid/missing/invalid,PASS,793,missing=0; invalid=0.
+2014,HU_Built_2000_Later_E valid/missing/invalid,PASS,793,missing=0; invalid=0.
+2014,Age_65_over_share valid/missing/invalid,PASS,793,missing=0; invalid=0.
+2014,Age_10_17_share valid/missing/invalid,PASS,793,missing=0; invalid=0.
+2014,Below_Poverty_Total_Pop_Share valid/missing/invalid,PASS,793,missing=0; invalid=0.
+2014,HU_Built_1939_Earlier valid/missing/invalid,PASS,793,missing=0; invalid=0.
+2014,Total_Vac_HU_E valid/missing/invalid,PASS,793,missing=0; invalid=0.
+2014,HH_Cost_Burden_Share valid/missing/invalid,PASS,793,missing=0; invalid=0.
+2014,Cost-burden source mapping,REVIEW,793,Uses owner+renter burden count / owner+renter income-complete households. Source workbook lacks table IDs/codebook for full verification.
+2014,Renter_Occupied_Share valid/missing/invalid,PASS,793,missing=0; invalid=0.
+2014,Renter-share source mapping,REVIEW,793,Uses renter units / total occupied units. Source workbook lacks table IDs/codebook; mapping conforms to requested B25003 definition.
+2019,Source GEOID validation,PASS,793,Rows 793; duplicates 0; malformed 0.
+2019,Boundary join,PASS,793,2010-vintage polygons; data without boundary 0; boundary without data 0.
+2019,Geographic vintage,INFO,793,2019 uses 2010 TIGER vintage. Same GEOID does not prove same polygon; no crosswalk/harmonization.
+2019,House-price blanks,INFO,23,Flagged/zero/blank prices remain blank; no values copied between years.
+2019,House-price geometry join,PASS,789,"House-price GEOIDs are joined to 2020-vintage geometry for all workbook years. 2020 boundary IDs without workbook rows: 3. Workbook vintage is inferred from the ID match, not stated in the workbook."
+2019,Renter count enrichment,PASS,793,Extracted from the local master workbook after all shared tract fields matched exactly. Owner + renter equals total occupied housing units on matched rows; missing renter counts remain blank.
+2019,Bachelor_or_higher_attainment_share valid/missing/invalid,PASS,793,missing=0; invalid=0.
+2019,Bachelor's-or-higher source mapping,REVIEW,793,Uses supplied Pop_Edu_BachAbove_E / Total_Pop_25Over_E fields. Includes postgraduate degrees. The source workbook does not provide ACS table IDs/codebook; 2024 tracts with zero 25+ denominator remain invalid.
+2019,Median_household_income valid/missing/invalid,WARN,792,missing=1; invalid=0.
+2019,Median_house_price valid/missing/invalid,WARN,766,missing=23; invalid=0.
+2019,Owner_occupied_share valid/missing/invalid,PASS,793,missing=0; invalid=0.
+2019,Income_100k_plus_share valid/missing/invalid,PASS,793,missing=0; invalid=0.
+2019,HU_Built_2000_Later_E valid/missing/invalid,PASS,793,missing=0; invalid=0.
+2019,Age_65_over_share valid/missing/invalid,PASS,793,missing=0; invalid=0.
+2019,Age_10_17_share valid/missing/invalid,PASS,793,missing=0; invalid=0.
+2019,Below_Poverty_Total_Pop_Share valid/missing/invalid,PASS,793,missing=0; invalid=0.
+2019,HU_Built_1939_Earlier valid/missing/invalid,PASS,793,missing=0; invalid=0.
+2019,Total_Vac_HU_E valid/missing/invalid,PASS,793,missing=0; invalid=0.
+2019,HH_Cost_Burden_Share valid/missing/invalid,PASS,793,missing=0; invalid=0.
+2019,Cost-burden source mapping,REVIEW,793,Uses owner+renter burden count / owner+renter income-complete households. Source workbook lacks table IDs/codebook for full verification.
+2019,Renter_Occupied_Share valid/missing/invalid,PASS,793,missing=0; invalid=0.
+2019,Renter-share source mapping,REVIEW,793,Uses renter units / total occupied units. Source workbook lacks table IDs/codebook; mapping conforms to requested B25003 definition.
+2024,Source GEOID validation,PASS,792,Rows 792; duplicates 0; malformed 0.
+2024,Boundary join,PASS,792,2020-vintage polygons; data without boundary 0; boundary without data 0.
+2024,Geographic vintage,INFO,792,2024 uses 2020 TIGER vintage. Same GEOID does not prove same polygon; no crosswalk/harmonization.
+2024,House-price blanks,INFO,25,Flagged/zero/blank prices remain blank; no values copied between years.
+2024,House-price geometry join,PASS,789,"House-price GEOIDs are joined to 2020-vintage geometry for all workbook years. 2020 boundary IDs without workbook rows: 3. Workbook vintage is inferred from the ID match, not stated in the workbook."
+2024,Renter count enrichment,WARN,789,Extracted from the local master workbook after all shared tract fields matched exactly. Owner + renter equals total occupied housing units on matched rows; missing renter counts remain blank.
+2024,Bachelor_or_higher_attainment_share valid/missing/invalid,WARN,789,missing=0; invalid=3.
+2024,Bachelor's-or-higher source mapping,REVIEW,789,Uses supplied Pop_Edu_BachAbove_E / Total_Pop_25Over_E fields. Includes postgraduate degrees. The source workbook does not provide ACS table IDs/codebook; 2024 tracts with zero 25+ denominator remain invalid.
+2024,Median_household_income valid/missing/invalid,WARN,773,missing=19; invalid=0.
+2024,Median_house_price valid/missing/invalid,WARN,764,missing=25; invalid=0.
+2024,Owner_occupied_share valid/missing/invalid,WARN,789,missing=0; invalid=3.
+2024,Income_100k_plus_share valid/missing/invalid,WARN,789,missing=0; invalid=3.
+2024,HU_Built_2000_Later_E valid/missing/invalid,PASS,792,missing=0; invalid=0.
+2024,Age_65_over_share valid/missing/invalid,WARN,789,missing=0; invalid=3.
+2024,Age_10_17_share valid/missing/invalid,WARN,789,missing=0; invalid=3.
+2024,Below_Poverty_Total_Pop_Share valid/missing/invalid,WARN,789,missing=0; invalid=3.
+2024,HU_Built_1939_Earlier valid/missing/invalid,PASS,792,missing=0; invalid=0.
+2024,Total_Vac_HU_E valid/missing/invalid,PASS,792,missing=0; invalid=0.
+2024,HH_Cost_Burden_Share valid/missing/invalid,WARN,789,missing=0; invalid=3.
+2024,Cost-burden source mapping,REVIEW,789,Uses owner+renter burden count / owner+renter income-complete households. Source workbook lacks table IDs/codebook for full verification.
+2024,Renter_Occupied_Share valid/missing/invalid,WARN,789,missing=3; invalid=0.
+2024,Renter-share source mapping,REVIEW,789,Uses renter units / total occupied units. Source workbook lacks table IDs/codebook; mapping conforms to requested B25003 definition.

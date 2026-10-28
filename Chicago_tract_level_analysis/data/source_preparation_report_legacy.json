@@ -1,0 +1,72 @@
+{
+  "input_workbooks": [
+    {
+      "year": 2014,
+      "source_workbook": "ACS_5YR_2014_MasterDF_Tracts2010 SELECTED (5).xlsx",
+      "worksheet": "Selected tracts",
+      "source_geoid_column": "GEOID",
+      "selected_rows": 793,
+      "unique_geoids": 793,
+      "output": "acs_tract_inputs_2014.csv"
+    },
+    {
+      "year": 2019,
+      "source_workbook": "ACS_5YR_2019_MasterDF_TractS2010 SELECTED (3).xlsx",
+      "worksheet": "Sheet1",
+      "source_geoid_column": "GEOID",
+      "selected_rows": 793,
+      "unique_geoids": 793,
+      "output": "acs_tract_inputs_2019.csv"
+    },
+    {
+      "year": 2024,
+      "source_workbook": "ACS_5YR_2024_MasterDF_Tracts2020 (4).xlsx",
+      "worksheet": "Tracts",
+      "source_geoid_column": "#NUM!",
+      "selected_rows": 792,
+      "unique_geoids": 792,
+      "output": "acs_tract_inputs_2024.csv"
+    }
+  ],
+  "acs_median_value_proxy": [
+    {
+      "year": 2014,
+      "rows": 793,
+      "missing_estimate": 6,
+      "output": "acs_median_value_proxy_2014.csv"
+    },
+    {
+      "year": 2019,
+      "rows": 793,
+      "missing_estimate": 14,
+      "output": "acs_median_value_proxy_2019.csv"
+    },
+    {
+      "year": 2024,
+      "rows": 792,
+      "missing_estimate": 22,
+      "output": "acs_median_value_proxy_2024.csv"
+    }
+  ],
+  "boundaries": [
+    {
+      "vintage": 2010,
+      "features": 793,
+      "file": "chicago_tracts_2010.geojson"
+    },
+    {
+      "vintage": 2020,
+      "features": 792,
+      "file": "chicago_tracts_2020.geojson"
+    }
+  ],
+  "selected_tract_counts": {
+    "2014": 793,
+    "2019": 793,
+    "2024": 792
+  },
+  "source_note": "2014 and 2019 use 2010 census tract GEOIDs; 2024 uses 2020 census tract GEOIDs. The supplied 2024 workbook labels GEOID as #NUM!; valid 11-digit values are preserved.",
+  "classification_output": "outputs/tables/classification_all_years.csv",
+  "benchmark_output": "outputs/tables/city_benchmarks.csv",
+  "quality_report": "outputs/tables/data_quality_report.csv"
+}

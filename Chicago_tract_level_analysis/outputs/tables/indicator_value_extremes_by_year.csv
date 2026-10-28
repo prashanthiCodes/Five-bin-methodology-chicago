@@ -1,0 +1,40 @@
+﻿year,indicator,label,unit,least_valid_tract_value,highest_valid_tract_value,valid_tract_count,missing_tract_count,invalid_tract_count,total_source_tract_count
+2014,Bachelor_or_higher_attainment_share,Bachelor's Degree or Higher Attainment Share,% of population aged 25+,0.0,93.88523047977422,793,0,0,793
+2014,Median_household_income,Median Household Income,USD per household (source dollar basis),4145.0,150987.0,793,0,0,793
+2014,Median_house_price,Median House Price,USD assumed,15500.0,1454000.0,763,26,0,789
+2014,Owner_occupied_share,Owner-Occupied Housing Share,% of occupied housing units,0.0,99.42528735632183,793,0,0,793
+2014,Income_100k_plus_share,"Households with Income $100,000 or More",% of households,0.0,68.68512110726644,793,0,0,793
+2014,HU_Built_2000_Later_E,Housing Units Built 2000 or Later,housing units,0.0,8568.0,793,0,0,793
+2014,Age_65_over_share,Population Aged 65 or Older,% of total population,0.0,47.03196347031963,793,0,0,793
+2014,Age_10_17_share,Population Aged 10–17,% of total population,0.0,29.041305456399797,793,0,0,793
+2014,Below_Poverty_Total_Pop_Share,Population Below Poverty,% of total population,0.2178649237472767,100.0,793,0,0,793
+2014,HU_Built_1939_Earlier,Housing Units Built 1939 or Earlier,housing units,0.0,2482.0,793,0,0,793
+2014,Total_Vac_HU_E,Vacant Housing Units,housing units,0.0,2023.0,793,0,0,793
+2014,HH_Cost_Burden_Share,Cost-Burdened Households,% of households with applicable cost data,11.31578947368421,100.0,793,0,0,793
+2014,Renter_Occupied_Share,Renter-Occupied Housing Share,% of occupied housing units,0.5747126436781609,100.0,793,0,0,793
+2019,Bachelor_or_higher_attainment_share,Bachelor's Degree or Higher Attainment Share,% of population aged 25+,0.9464751958224543,94.81865284974094,793,0,0,793
+2019,Median_household_income,Median Household Income,USD per household (source dollar basis),11146.0,194167.0,792,1,0,793
+2019,Median_house_price,Median House Price,USD assumed,31965.11627906977,2000000.0,766,23,0,789
+2019,Owner_occupied_share,Owner-Occupied Housing Share,% of occupied housing units,0.0,96.62921348314607,793,0,0,793
+2019,Income_100k_plus_share,"Households with Income $100,000 or More",% of households,0.0,79.01345291479821,793,0,0,793
+2019,HU_Built_2000_Later_E,Housing Units Built 2000 or Later,housing units,0.0,7887.0,793,0,0,793
+2019,Age_65_over_share,Population Aged 65 or Older,% of total population,0.0,53.09734513274337,793,0,0,793
+2019,Age_10_17_share,Population Aged 10–17,% of total population,0.0,26.036866359447004,793,0,0,793
+2019,Below_Poverty_Total_Pop_Share,Population Below Poverty,% of total population,0.0,73.8626964433416,793,0,0,793
+2019,HU_Built_1939_Earlier,Housing Units Built 1939 or Earlier,housing units,0.0,2384.0,793,0,0,793
+2019,Total_Vac_HU_E,Vacant Housing Units,housing units,0.0,1580.0,793,0,0,793
+2019,HH_Cost_Burden_Share,Cost-Burdened Households,% of households with applicable cost data,12.5,77.68496420047732,793,0,0,793
+2019,Renter_Occupied_Share,Renter-Occupied Housing Share,% of occupied housing units,3.3707865168539324,100.0,793,0,0,793
+2024,Bachelor_or_higher_attainment_share,Bachelor's Degree or Higher Attainment Share,% of population aged 25+,2.188782489740082,97.32673267326733,789,0,3,792
+2024,Median_household_income,Median Household Income,USD per household (source dollar basis),13585.0,250001.0,773,19,0,792
+2024,Median_house_price,Median House Price,USD assumed,55000.0,2000000.0,764,25,0,789
+2024,Owner_occupied_share,Owner-Occupied Housing Share,% of occupied housing units,0.0,97.50492449113591,789,0,3,792
+2024,Income_100k_plus_share,"Households with Income $100,000 or More",% of households,0.0,86.53846153846155,789,0,3,792
+2024,HU_Built_2000_Later_E,Housing Units Built 2000 or Later,housing units,0.0,6115.0,792,0,0,792
+2024,Age_65_over_share,Population Aged 65 or Older,% of total population,0.30991735537190085,55.41740674955595,789,0,3,792
+2024,Age_10_17_share,Population Aged 10–17,% of total population,0.0,27.65818656229615,789,0,3,792
+2024,Below_Poverty_Total_Pop_Share,Population Below Poverty,% of total population,0.0,74.50710683172856,789,0,3,792
+2024,HU_Built_1939_Earlier,Housing Units Built 1939 or Earlier,housing units,0.0,2340.0,792,0,0,792
+2024,Total_Vac_HU_E,Vacant Housing Units,housing units,0.0,1024.0,792,0,0,792
+2024,HH_Cost_Burden_Share,Cost-Burdened Households,% of households with applicable cost data,10.521885521885523,82.7188940092166,789,0,3,792
+2024,Renter_Occupied_Share,Renter-Occupied Housing Share,% of occupied housing units,2.495075508864084,100.0,789,3,0,792

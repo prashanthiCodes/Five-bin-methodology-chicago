@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "checks": 92884,
+  "years": [
+    2014,
+    2019,
+    2024
+  ],
+  "summary_rows": 39,
+  "classification_rows": 30903,
+  "public_files": [
+    "ATTRIBUTION.txt",
+    "README.md",
+    "assets/data/classification_2014.json",
+    "assets/data/classification_2019.json",
+    "assets/data/classification_2024.json",
+    "assets/data/indicator_metadata.json",
+    "data/boundaries/chicago_tracts_2010.geojson",
+    "data/boundaries/chicago_tracts_2020.geojson",
+    "index.html"
+  ]
+}

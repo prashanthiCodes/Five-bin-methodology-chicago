@@ -1,0 +1,167 @@
+{
+  "indicators": [
+    {
+      "id": "Bachelor_or_higher_attainment_share",
+      "label": "Bachelor's Degree or Higher Attainment Share",
+      "kind": "share",
+      "direction": "positive",
+      "n": "Pop_Edu_BachAbove_E",
+      "d": "Total_Pop_25Over_E",
+      "unit": "% of population aged 25+",
+      "formula": "Population aged 25+ with a bachelor's degree or higher ÷ total population aged 25+ × 100"
+    },
+    {
+      "id": "Median_household_income",
+      "label": "Median Household Income",
+      "kind": "median",
+      "direction": "positive",
+      "src": "HH_Med_Inc_E",
+      "weight": "Total_HH_E.x",
+      "unit": "USD per household (source dollar basis)",
+      "formula": "Median(household income)"
+    },
+    {
+      "id": "Owner_occupied_share",
+      "label": "Owner-Occupied Housing Share",
+      "kind": "share",
+      "direction": "positive",
+      "n": "Total_Own_HH_E.x",
+      "d": "Total_HH_E.x",
+      "unit": "% of occupied housing units",
+      "formula": "Owner-occupied units ÷ total occupied units × 100"
+    },
+    {
+      "id": "Income_100k_plus_share",
+      "label": "Households with Income $100,000 or More",
+      "kind": "share",
+      "direction": "positive",
+      "n": "HH_Inc_100K_More_E",
+      "d": "Total_HH_E.x",
+      "unit": "% of households",
+      "formula": "Households with income ≥ $100,000 ÷ total households × 100"
+    },
+    {
+      "id": "HU_Built_2000_Later_E",
+      "label": "Housing Units Built 2000 or Later",
+      "kind": "count",
+      "direction": "positive",
+      "src": "HU_Built_2000_Later_E",
+      "unit": "housing units",
+      "formula": "Count of housing units built 2000 or later"
+    },
+    {
+      "id": "Age_65_over_share",
+      "label": "Population Aged 65 or Older",
+      "kind": "share",
+      "direction": "neutral",
+      "n": "Pop_Age_65Over_E",
+      "d": "Total_Pop_E",
+      "unit": "% of total population",
+      "formula": "Population aged 65+ ÷ total population × 100"
+    },
+    {
+      "id": "Age_10_17_share",
+      "label": "Population Aged 10–17",
+      "kind": "share",
+      "direction": "neutral",
+      "n": "Pop_Age_10to17_E",
+      "d": "Total_Pop_E",
+      "unit": "% of total population",
+      "formula": "Population aged 10–17 ÷ total population × 100"
+    },
+    {
+      "id": "Below_Poverty_Total_Pop_Share",
+      "label": "Population Below Poverty",
+      "kind": "share",
+      "direction": "negative",
+      "n": "Pop_Below_Pov_E",
+      "d": "Total_Pop_E",
+      "unit": "% of total population",
+      "formula": "People below poverty ÷ total tract population × 100"
+    },
+    {
+      "id": "HU_Built_1939_Earlier",
+      "label": "Housing Units Built 1939 or Earlier",
+      "kind": "count",
+      "direction": "negative",
+      "src": "HU_Built_1939_Earlier_E",
+      "unit": "housing units",
+      "formula": "Count of housing units built 1939 or earlier"
+    },
+    {
+      "id": "Total_Vac_HU_E",
+      "label": "Vacant Housing Units",
+      "kind": "count",
+      "direction": "negative",
+      "src": "Total_Vac_HU_E",
+      "unit": "housing units",
+      "formula": "Count of vacant housing units"
+    },
+    {
+      "id": "HH_Cost_Burden_Share",
+      "label": "Cost-Burdened Households",
+      "kind": "share",
+      "direction": "negative",
+      "nf": [
+        "Own_HH_Cost_Burden_E",
+        "Rent_HH_Cost_Burden_E"
+      ],
+      "df": [
+        "Total_Own_HH_IncComp_E",
+        "Total_Rent_HH_IncComp_E.x"
+      ],
+      "unit": "% of households with applicable cost data",
+      "formula": "(Owner + renter cost-burdened households) ÷ households with applicable cost data × 100"
+    },
+    {
+      "id": "Renter_Occupied_Share",
+      "label": "Renter-Occupied Housing Share",
+      "kind": "share",
+      "direction": "neutral",
+      "n": "Total_Rent_HH_E.x",
+      "d": "Total_HH_E.x",
+      "unit": "% of occupied housing units",
+      "formula": "Renter-occupied units ÷ total occupied units × 100"
+    }
+  ],
+  "bins": [
+    {
+      "raw_bin": 1,
+      "range": "Below 50%",
+      "positive_label": "Very Low",
+      "negative_label": "Very High",
+      "neutral_label": "Very Low"
+    },
+    {
+      "raw_bin": 2,
+      "range": "50% to below 75%",
+      "positive_label": "Low",
+      "negative_label": "High",
+      "neutral_label": "Low"
+    },
+    {
+      "raw_bin": 3,
+      "range": "75% through 125% inclusive",
+      "positive_label": "Middle",
+      "negative_label": "Middle",
+      "neutral_label": "Middle"
+    },
+    {
+      "raw_bin": 4,
+      "range": "Above 125% through 150% inclusive",
+      "positive_label": "High",
+      "negative_label": "Low",
+      "neutral_label": "High"
+    },
+    {
+      "raw_bin": 5,
+      "range": "Above 150%",
+      "positive_label": "Very High",
+      "negative_label": "Very Low",
+      "neutral_label": "Very High"
+    }
+  ],
+  "benchmark_note": "Relative percent = tract value / same-year benchmark × 100. Share benchmarks are pooled numerator/denominator rates; count benchmarks are unweighted mean tract counts; median benchmarks are documented tract-distribution references.",
+  "geography_note": "2014/2019 use 2010-vintage tracts; 2024 uses 2020-vintage tracts. Not a fixed-geography panel.",
+  "publication_note": "Review build. Price workbook values withheld pending sharing approval."
+}
